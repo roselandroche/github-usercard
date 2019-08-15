@@ -2,7 +2,66 @@
            (replacing the palceholder with your Github name):
            https://api.github.com/users/<your name>
 */ 
+const cardsSection = document.querySelector(".cards")
 
+function newComponent(obj) {
+  const cardDiv = document.createElement('div')
+  cardDiv.classList.add('.card')
+  cardsSection.appendChild('.card')
+
+  const userImg = document.createElement('img')
+  userImg.src = obj.avatar_url
+  cardDiv.appendChild(userImg)
+
+  const cardInfo = document.createElement('div')
+  cardInfo.classList.add('card-info')
+  cardDiv.appendChild(cardInfo)
+
+  const name = document.createElement('h3')
+  name.classList.add('.name')
+  name.textContent = obj.name
+  cardInfo.appendChild(name)
+
+  const userName = document.createElement('p')
+  userName.classList.add('.username')
+  userName.textContent = obj.login
+  cardInfo.appendChild(username)
+
+  const location = document.createElement('p')
+  location.textContent = `Location: ${obj.location}`
+  cardInfo.appendChild(location)
+
+  const profile = document.createElement('p')
+  profile.textContent = `Profile:\n`
+  cardInfo.appendChild(profile)
+
+  const userUrl = document.createElement('a')
+  userUrl.href = obj.url
+  userUrl.textContent = `${obj.url}`
+  profile.appendChild(userUrl)
+
+  const followers = document.createElement('p')
+  followers.textContent = `Followers: ${obj.followers_url}`
+  cardInfo.appendChild(followers)
+
+  const following = document.createElement('p')
+  following.textContent = `Following: ${obj.following_url}`
+  cardInfo.appendChild(following)
+
+  const bio = document.createElement('p')
+  bio.textContent = `Bio: ${obj.bio}`
+  cardInfo.appendChild(bio)
+}
+
+// console.log(newComponent)
+
+axios.get('https://api.github.com/users/roselandroche')
+  .then( response => {
+    
+  })
+  .catch( error => {
+    console.log('Sucks to be you')
+  })
 /* Step 2: Inspect and study the data coming back, this is YOUR 
    github info! You will need to understand the structure of this 
    data in order to use it to build your component function 
