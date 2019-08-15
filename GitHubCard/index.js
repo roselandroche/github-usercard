@@ -51,13 +51,15 @@ function newComponent(obj) {
   const bio = document.createElement('p')
   bio.textContent = `Bio: ${obj.bio}`
   cardInfo.appendChild(bio)
-}
 
-// console.log(newComponent)
+  return cardDiv
+}
 
 axios.get('https://api.github.com/users/roselandroche')
   .then( response => {
-    
+    response.data.forEach( item => {
+      let newCard = newComponent(item);
+    })
   })
   .catch( error => {
     console.log('Sucks to be you')
