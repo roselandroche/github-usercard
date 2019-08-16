@@ -1,6 +1,6 @@
 /* Step 1: using axios, send a GET request to the following URL 
            (replacing the palceholder with your Github name):
-           https://api.github.com/users/<your name>
+           https://api.github.com/users/roselandroche
 */ 
 const cardsSection = document.querySelector(".cards")
 
@@ -32,12 +32,12 @@ function newComponent(obj) {
   cardInfo.appendChild(location)
 
   const profile = document.createElement('p')
-  profile.textContent = `Profile:\n`
+  profile.textContent = `Profile: `
   cardInfo.appendChild(profile)
 
   const userUrl = document.createElement('a')
-  userUrl.href = obj.url
-  userUrl.textContent = `${obj.url}`
+  userUrl.href = obj.html_url
+  userUrl.textContent = `${obj.html_url}`
   profile.appendChild(userUrl)
 
   const followers = document.createElement('p')
