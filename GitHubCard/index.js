@@ -122,3 +122,14 @@ followersArray.forEach((item) => {
   luishrd
   bigknell
 */
+
+//// STRETCH ////
+
+// const expand = document.createElement('span')
+// expand.addEventListener('click', (event) => {
+//   expand.classList.toggle('expand')
+// })
+// expand.textContent ='Expand'
+// expand.style.padding = '40px 10px'
+
+// console.log(expand)
