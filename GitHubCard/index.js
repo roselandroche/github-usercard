@@ -57,8 +57,7 @@ function newComponent(obj) {
 
 axios.get('https://api.github.com/users/roselandroche')
   .then( (response) => {
-    console.log('Here you go:', response.data)
-    document.querySelector('.cards').appendChild(newComponent(response.data))
+    cardsSection.appendChild(newComponent(response.data))
   })
   .catch( error => {
     console.log(error)
@@ -75,7 +74,7 @@ axios.get('https://api.github.com/users/roselandroche')
 */
 
 /* Step 5: Now that you have your own card getting added to the DOM, either 
-          follow this link in your browser https://api.github.com/users/bigknell/followers 
+          follow this link in your browser https://api.github.com/users/<user-name>/followers 
           , manually find some other users' github handles, or use the list found 
           at the bottom of the page. Get at least 5 different Github usernames and add them as
           Individual strings to the friendsArray below.
@@ -88,9 +87,8 @@ const followersArray = ['https://api.github.com/users/tetondan', 'https://api.gi
 
 followersArray.forEach((item) => {
   axios.get(item)
-  .then( (response) => {
-    console.log('Here you go:', response.data)
-    document.querySelector('.cards').appendChild(newComponent(response.data))
+  .then( response => {
+    cardsSection.appendChild(newComponent(response.data))
   })
   .catch( error => {
     console.log(error)
