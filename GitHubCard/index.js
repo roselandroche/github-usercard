@@ -56,10 +56,8 @@ function newComponent(obj) {
 }
 
 axios.get('https://api.github.com/users/roselandroche')
-  .then( response => {
-    response.data.forEach( item => {
-      let newCard = newComponent(item);
-    })
+  .then( (data) => {
+    console.log('Here you go:', data)
   })
   .catch( error => {
     console.log('Sucks to be you')
