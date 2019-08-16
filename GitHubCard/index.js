@@ -6,8 +6,8 @@ const cardsSection = document.querySelector(".cards")
 
 function newComponent(obj) {
   const cardDiv = document.createElement('div')
-  cardDiv.classList.add('.card')
-  cardsSection.appendChild('.card')
+  cardDiv.classList.add('card')
+  cardsSection.appendChild(cardDiv)
 
   const userImg = document.createElement('img')
   userImg.src = obj.avatar_url
@@ -25,7 +25,7 @@ function newComponent(obj) {
   const userName = document.createElement('p')
   userName.classList.add('.username')
   userName.textContent = obj.login
-  cardInfo.appendChild(username)
+  cardInfo.appendChild(userName)
 
   const location = document.createElement('p')
   location.textContent = `Location: ${obj.location}`
@@ -56,11 +56,12 @@ function newComponent(obj) {
 }
 
 axios.get('https://api.github.com/users/roselandroche')
-  .then( (data) => {
-    console.log('Here you go:', data)
+  .then( (response) => {
+    console.log('Here you go:', response.data)
+    document.querySelector('.cards').appendChild(newComponent(response.data))
   })
   .catch( error => {
-    console.log('Sucks to be you')
+    console.log(error)
   })
 /* Step 2: Inspect and study the data coming back, this is YOUR 
    github info! You will need to understand the structure of this 
@@ -74,7 +75,7 @@ axios.get('https://api.github.com/users/roselandroche')
 */
 
 /* Step 5: Now that you have your own card getting added to the DOM, either 
-          follow this link in your browser https://api.github.com/users/<Your github name>/followers 
+          follow this link in your browser https://api.github.com/users/bigknell/followers 
           , manually find some other users' github handles, or use the list found 
           at the bottom of the page. Get at least 5 different Github usernames and add them as
           Individual strings to the friendsArray below.
@@ -83,7 +84,18 @@ axios.get('https://api.github.com/users/roselandroche')
           user, and adding that card to the DOM.
 */
 
-const followersArray = [];
+const followersArray = ['https://api.github.com/users/tetondan', 'https://api.github.com/users/dustinmyers', 'https://api.github.com/users/justsml', 'https://api.github.com/users/luishrd', 'https://api.github.com/users/bigknell'];
+
+followersArray.forEach((item) => {
+  axios.get(item)
+  .then( (response) => {
+    console.log('Here you go:', response.data)
+    document.querySelector('.cards').appendChild(newComponent(response.data))
+  })
+  .catch( error => {
+    console.log(error)
+  })
+})
 
 /* Step 3: Create a function that accepts a single object as its only argument,
           Using DOM methods and properties, create a component that will return the following DOM element:
